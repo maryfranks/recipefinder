@@ -1,7 +1,11 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.get_recipes("https://www.food2fork.com/api/search?key=da315bf80dd50622e37f1677756d0a3d&q=chocolate")["recipes"]
+    base_url = ENV["FOOD2FORK_SERVER_AND_PORT"]
+    key = "key=#{ENV["FOOD2FORK_KEY"]}"
+    search_term = "chocolate"
+    url = "#{base_url}#{key}&q=#{search_term}"
+    @recipes = Recipe.get_recipes(url)["recipes"]
   end
 
 end
