@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class RecipesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "get root" do
+    get root_url
+    assert_response :success
+  end
 end
